@@ -1,0 +1,628 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+
+.Encabezado{
+    position: relative;
+    display: flex;
+    height: 66px;
+    z-index: 2;
+}
+.Izquierda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 10%;
+    height: 100%;
+}
+.Menu_Icon{
+    display: flex;
+    height: 35px;
+    width: 35px;
+    background-image: url("/Imagenes/menu.png");
+    background-size: cover;
+}
+
+
+.Centro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 60%;
+    height: 100%;
+}
+.Text{
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: calc(1em + 1vw);
+    color: rgb(255, 162, 0);  
+    user-select: none;
+}
+.SpoonIcon{
+    display: flex;
+    height: 35px;
+    width: 35px;
+    background-image: url("/Imagenes/spoon.svg");
+    background-size: cover;
+    background-position: center;
+    height: calc(1em + 1vw);
+    width: 10px;
+}
+
+
+
+
+.Derecha{
+    position: relative;
+    width: 28%;
+    height: 100%;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+.ElementosDeBusqueda{
+    position: relative;
+    width: 100%;
+}
+
+
+/*Entrada*/
+.EntradaDeBusqueda{
+    display: flex;
+    width: 100%;
+    height: 46px;
+    outline: none;
+    border: none;
+    border-radius: 22px;
+    padding-left: 45px;
+    padding-right: 80px;
+    box-sizing: border-box;
+    background-color: rgba(209, 209, 209, 0.5);
+}
+.EntradaDeBusqueda:focus{
+    background-color: rgb(255, 255, 255);
+    border-radius: 22px 22px 0px 0px;
+    box-shadow: 0px -2px 5px rgba(103, 103, 103, 0.2); 
+}
+
+/*Botones Boton estilo para botones de accione paara las recetas en busqueda prevista*/
+.BotonA{
+    position: absolute;
+    display: flex;
+    width: 33px;
+    height: 33px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    top: 7px;
+    background-color: transparent;
+}
+.Abrir{
+    right: 8px;
+    display: none;
+}
+.Cerrar{
+    right: 50px;
+    display: none;
+}
+.Buscar{
+    left: 8px;
+}
+.Borrar{
+    display: none;
+    right: 44px;
+}
+.BotonA:active{
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25); /* Estilo de la sombra */
+}
+.BotonA:hover{
+    background-color: rgba(128, 128, 128, 0.3);
+}
+
+/*Iconos*/
+.Icono{
+    background-size: cover;
+    background-color: transparent;
+}
+.IconoAbrir{
+    right: 8px;
+    height: 100%;
+    width: 100%;
+    background-image: url("/Imagenes/abrir.svg");
+}
+.IconoCerrar{
+    right: 8px;
+    height: 60%;
+    width: 60%;
+    background-image: url("/Imagenes/cerrar.svg");
+}
+.IconoBuscar{
+    left: 8px;
+    height: 50%;
+    width: 50%;
+    background-image: url("/Imagenes/buscar.svg");
+}
+.IconoBorrar{
+    left: 50px;
+    height: 50%;
+    width: 50%;
+    background-image: url("/Imagenes/borrar.svg");
+}
+
+
+/*Div de resultados previos de busqueda*/
+.Resultados{
+    position: relative;
+    display: none;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: rgba(252, 252, 252, 0.5);
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.45); /* Estilo de la sombra */
+    border-top: 1px solid rgb(197, 197, 197);
+    border-radius: 0px 0px 20px 20px;
+    min-height: 15px;
+    max-height: 600px;
+    overflow-y: auto;
+    transition: 1s;
+}
+
+.Display_Block{
+    display: block;
+}
+
+
+
+/* Items de vista previa de busqueda */
+.BotonP{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    overflow: auto;
+    cursor: pointer;
+    border: none; 
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+    background: no-repeat;
+    background-size: 100%; 
+    background-position: center;
+    /* background-image: url(/Imagenes/Espagueti.jpg); */
+}
+.BotonP h2{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    color: aliceblue;
+    background-image: linear-gradient(to left, transparent, rgb(255, 132, 0)); 
+    background-color: rgba(255, 132, 0, 0.2);
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: calc(0.8rem + 0.5vw);
+    line-height: 0.9;
+}
+.BotonP:hover{
+    background-color: rgba(209, 209, 209, 0.3);
+}
+
+
+.Leyenda{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: end;
+    box-sizing: border-box;
+    color: rgb(255, 174, 0);
+    padding-right: 12px;
+    border-top: 1px solid rgb(234, 234, 234);
+    user-select: none;
+}
+
+
+/*=====================================================================================*/
+/*======================= vvv   Nav para recetas favoritas   vvvv =====================*/
+
+.NavFavoritos{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 120px;
+    transition: 1s;
+}
+
+/*Leyenda superior del nav*/
+.LeyendaFavoritos{
+    height: 28px;
+    font-size: 1rem;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.9);
+}
+
+.imagenStar{
+    width: 20px;
+    height: 100%;
+    background-image: url("/Imagenes/star.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*Botones para mover el contenido del nav*/
+.BotonMover{
+    position: absolute;
+    background-color:transparent;
+    outline: none;
+    border: none;
+    height: 100px;
+    width: 40px;
+    bottom: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.BotonMover:hover{
+    background-color: rgba(255, 255, 255, 0.858);
+    outline: 5px solid rgba(194, 194, 194, 0.122);
+    box-shadow: 0px 0px 10px rgb(12, 12, 12);
+}
+.AIzquierda{
+    left: 5px;
+    background-image: url("/Imagenes/izquierda.svg");
+}
+.ADerecha{
+    right: 5px;
+    background-image: url("/Imagenes/derecha.svg");
+}
+
+
+
+
+/*Contenido del nav, recetas favoritas*/
+.Favoritos{
+    position: relative;
+    height: 160px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 55px;
+    padding-right: 55px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    scroll-behavior: smooth;
+    background-color: aliceblue;
+
+}
+.BotonF{
+    position: relative;
+    display: flex;
+    height: 90%;
+    width: 200px;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    transition: 0.5s;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+.BotonF:hover{
+    box-shadow: 0px 0px 10px rgb(255, 162, 0);
+}
+
+
+/*Elementos del la receta favorita*/
+.FavoritaImg{
+   position:absolute;
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+   box-sizing: border-box;
+   border: 3px solid rgb(255, 255, 255);
+   background-position: center;
+   background-repeat: no-repeat;
+   border-radius: 10px;
+}
+.FavoritaNombre{
+    position: absolute;
+    width: 100%;
+    max-height: 30px;
+    padding: 5px 0px;
+    justify-content: end;
+    font-size: 0.8rem;
+    line-height: 0.7rem;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius:  0px 0px 10px 10px;
+    overflow: hidden;
+    bottom: 0;
+}
+.FavoritaNS{
+    position: absolute;
+    display: flex;
+    height: 25px;
+    width: 30px;
+    top: 5px;
+    right: 5px;
+    align-items: center;
+    justify-content: end;
+    font-size: 0.7rem;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    user-select: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.855);
+    border-radius: 5px;
+}
+
+
+/*vv  Recetas  vv*/
+
+.LeyendaRecetas{
+    height: 40px;
+    font-size: 2rem;
+    padding-top: 10px;
+}
+
+.ContenedorRecetas{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    box-sizing: border-box;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 2px solid rgb(255, 255, 255);
+}
+
+.RecetaRandom{
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    width: calc(33.33% - 20px); 
+    height: 200px;
+    margin: 5px;
+    box-sizing: border-box; /* Incluir padding en el ancho */
+    box-shadow: 1px 2px 5px rgba(128, 128, 128, 0.536);
+}
+.RecetaBoton{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    border: none;
+}
+.RecetaValoracion{
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    height: 20%;
+    width: 100%;
+    bottom: 0px;
+    border-radius: 0px 0px 7px 7px;
+    background-color: rgb(255, 255, 255);
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+.RecetaNombre{
+    position: absolute;
+    align-items: center;
+    padding-left: 10px;
+    display: flex;
+    width: 50%;
+    height: 20%;
+    bottom: 0px;
+}
+.star{
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    background-image: url(/Imagenes/starRate.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+}
+.star1{filter: invert(39%) sepia(76%) saturate(7500%) hue-rotate(1deg) brightness(103%) contrast(106%) drop-shadow(0px 0px 2px rgb(141, 141, 141));}
+.star2{filter: invert(32%) sepia(90%) saturate(3630%) hue-rotate(1deg) brightness(101%) contrast(106%) drop-shadow(0px 0px 2px rgb(141, 141, 141));}
+.star3{filter: invert(57%) sepia(79%) saturate(1845%) hue-rotate(39deg) brightness(166%) contrast(145%) drop-shadow(0px 0px 2px rgb(141, 141, 141));}
+.star4{filter: invert(27%) sepia(79%) saturate(1845%) hue-rotate(39deg) brightness(116%) contrast(145%) drop-shadow(0px 0px 2px rgb(141, 141, 141));}
+.star5{filter: invert(54%) sepia(42%) saturate(7335%) hue-rotate(74deg) brightness(125%) contrast(122%) drop-shadow(0px 0px 2px rgb(141, 141, 141));}
+
+/* Detalles de la receta */
+
+.containerDetails{
+    text-align: center;
+}
+
+.receta{
+    background-size: cover;
+    width: 100%;
+    border-top: 1px solid rgba(7, 7, 7, 0.1);
+}
+
+.receta img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.ingredientes, .instruccions, .containerYoutube{
+    display: grid;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ingredientes .ingredientsList ul {
+    list-style-type: none;
+    padding-left: 60px;
+}
+
+.ingredientes li::before {
+    content: '•'; 
+    color: orangered; 
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 25px;
+}
+
+.ingredientsList{
+    display: flex;
+    gap: 20px;
+}
+
+.ingredientsList ul{
+    text-align: justify;
+}
+
+.instruccions .instructions2 p{
+    text-align: justify;
+}
+
+.instruccions p strong{
+    color: orangered;
+}
+
+.ListOfInstructions{
+    display: flex;
+    gap: 50px;
+    margin: 0 100px;
+}
+
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =*/
+/* = = = = = = = = = = = = = = = MediasQ = = = = = = = = = = = = = = = = = = = = = = =*/
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =*/
+
+@media only screen and (max-width: 1040px){
+    .Centro{
+        width: 50%;
+    }
+    .Derecha{
+        width: 38%;
+    }
+    .Leyenda{
+        display: none;
+    }
+    .BotonF{
+        width: 140px;
+    }
+    .Encabezado{
+        box-shadow: 0px 4px 5px rgba(194, 194, 194, 0.2);
+    }
+    .FavoritaImg{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(155, 155, 155, 0.5);
+    }
+    .FavoritaNombre{
+        font-size: 0.7rem;
+        height: 30px;
+        background-color: transparent;
+        color: rgb(84, 84, 84);
+    }
+    .RecetaRandom{
+        width: calc(50% - 20px); 
+    }
+
+    .containerYoutube iframe{
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+        
+    /*Cuando el input está replegado por la pantalla pequeña*/
+    .DesplegadoNecesario .Centro{
+        width: 75%;
+    }
+    .DesplegadoNecesario .Derecha{
+        width: 13%;
+    }
+    .DesplegadoNecesario .EntradaDeBusqueda{
+        display: none;
+    }
+    .DesplegadoNecesario .Abrir{
+        display: flex;
+        background-color: rgba(124, 124, 124, 0.4);
+    }
+    .DesplegadoNecesario .Abrir:hover{
+        background-color: rgba(158, 158, 158, 0.4);
+    }
+    .DesplegadoNecesario .Buscar{
+        display: none;
+    }
+    .Resultados{
+        max-height: 400px;
+    }
+    .BotonF{
+        width: 100px;
+        justify-content: center;
+    }
+    .FavoritaImg{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 5px rgba(155, 155, 155, 0.5);
+    }
+    .FavoritaNombre{
+        font-size: 0.7rem;
+        height: 30px;
+        background-color: transparent;
+        color: rgb(84, 84, 84);
+    }
+
+    .RecetaRandom{
+        width: calc(100% - 20px); 
+    }
+
+    .DesplegadoActivo .Centro{
+        display: none;
+    }
+    .DesplegadoActivo .Derecha{
+        width: 88%;
+    }
+    .DesplegadoActivo .Cerrar{
+        display: flex;
+        right: 8px;
+    }
+
+    .ingredientsList{
+        flex-direction: column;
+        gap:0;
+    }
+
+    .ListOfInstructions{
+        flex-direction: column;
+        gap: 0;
+        margin: auto;
+    }
+
+    .containerYoutube iframe{
+        width: 343px;
+    }
+} 
