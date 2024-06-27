@@ -498,6 +498,7 @@
 
 .instruccions .instructions2 p{
     text-align: justify;
+    width: 300px;
 }
 
 .instruccions p strong{
@@ -551,9 +552,14 @@
     .containerYoutube iframe{
         width: 500px;
     }
+
+    .instruccions .instructions2 p{
+        width: 250px;
+    }
 }
 
-@media only screen and (max-width: 500px){
+
+@media only screen and (max-width: 600px){
         
     /*Cuando el input está replegado por la pantalla pequeña*/
     .DesplegadoNecesario .Centro{
@@ -620,6 +626,10 @@
         flex-direction: column;
         gap: 0;
         margin: auto;
+    }
+
+    .instruccions .instructions2 p{
+        width: 300px;
     }
 
     .containerYoutube iframe{

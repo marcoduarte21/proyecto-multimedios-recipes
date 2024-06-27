@@ -33,9 +33,11 @@ function recipesDetails() {
                     </div>
                     <div class="ingredientes">
                     <h2>Ingredientes</h2>
-                        <div class="ingredientsList">
-                            ${ListaDeIngredientesDiv(meal)}
-                        </div>
+                        <table>
+                        <tbody>
+                        ${getListIngredients(ListIngredients(meal))}
+                        </tbody>
+                        </table>
                     </div>
                 <div class="instruccions">
                     <h2>Instrucciones de la receta</h2>
@@ -65,7 +67,7 @@ function ListaDeInstrucciones(texto){
     let arrayDeTexto = texto.split('.');
     let parrafo = '';
     let arraySize = Math.round(arrayDeTexto.length/2);
-    for(let i=0; i < arraySize-1; i++){
+    for(let i=0; i < arraySize; i++){
         if(arrayDeTexto[i]){
         parrafo += `<p><strong>Step ${i+1}:</strong> ${arrayDeTexto[i]}.</p>`;
         }
@@ -78,7 +80,7 @@ function ListaDeInstrucciones2(texto){
     let arrayDeTexto = texto.split('.');
     let parrafo = '';
     let arraySize = Math.round(arrayDeTexto.length/2);
-    let contador = arraySize-1;
+    let contador = arraySize;
     for(let i=contador; i <= (arraySize*2); i++){
         if(arrayDeTexto[i]){
         parrafo += `<p><strong>Step ${i+1}:</strong> ${arrayDeTexto[i]}.</p>`;
@@ -88,21 +90,51 @@ function ListaDeInstrucciones2(texto){
     return parrafo;
 }
 
-function generarListaIngredients(meal, contador, length){
-    let ingredientsList = '';
+
+function ListIngredients(meal){
     
-    for (let i = contador; i <= length; i++) {
+    let ingredients = [];
+
+
+    for(let i = 1; i <= 20; i++){
         const ingredient = meal[`strIngredient${i}`];
         const measure = meal[`strMeasure${i}`];
-        if (ingredient) {
-            ingredientsList += `
-            <img src="https://www.themealdb.com/images/ingredients/${ingredient}-Small.png">
-            <li>${measure} ${ingredient}.</li>`;
+        if(ingredient){
+            ingredients.push({ingredient: ingredient, measure: measure})
         }
+    }
+
+    console.log(ingredients[1].ingredient + ''+ ingredients[1].measure);
+
+    return ingredients;
+}
+
+
+function getListIngredients(meal) {
+    let ingredientsList = '';
+    
+    for (let i = 0; i < meal.length; i += 3) {
+        ingredientsList += '<tr>';
+        
+        for (let j = 0; j < 3; j++) {
+            if (i + j < meal.length) {
+                ingredientsList += `
+                    <td>
+                        <img src="https://www.themealdb.com/images/ingredients/${meal[i + j].ingredient}-Small.png">
+                        <p>${meal[i + j].measure} ${meal[i + j].ingredient}.</p>
+                    </td>
+                `;
+            } else {
+                ingredientsList += '<td></td>'; // Agrega una celda vacía si no hay suficiente ingrediente
+            }
+        }
+        
+        ingredientsList += '</tr>';
     }
 
     return ingredientsList;
 }
+
 
 function generarURLYoutube(url){
 
@@ -111,33 +143,3 @@ function generarURLYoutube(url){
 
     return embedUrl;
 }
-
-function ListaDeIngredientesDiv(meal){
-    var ingredientList = '';
-
-            if(generarListaIngredients(meal,1,7) && generarListaIngredients(meal,8,14) && generarListaIngredients(meal,15,20)){
-
-                ingredientList = `<ul>
-                ${generarListaIngredients(meal,1,7)}
-                </ul>
-                <ul>
-                ${generarListaIngredients(meal,8,14)}
-                </ul>
-                <ul>
-                ${generarListaIngredients(meal,15,20)}
-                </ul>`
-            }else if(generarListaIngredients(meal,1,7) && generarListaIngredients(meal,8,14)){
-                ingredientList = `<ul>
-                ${generarListaIngredients(meal,1,7)}
-                </ul>
-                <ul>
-                ${generarListaIngredients(meal,8,14)}
-                </ul>`
-            }else if(generarListaIngredients(meal,1,7)){
-                ingredientList = `<ul>
-                ${generarListaIngredients(meal,1,7)}
-                </ul>`
-            }
-                return ingredientList;
-}
-
