@@ -515,6 +515,18 @@
     text-decoration: none;
 }
 
+#buttonBackHome{
+    font-size: 10px;
+    position: absolute;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: orangered;
+    padding: 4px;
+    font-weight: bold;
+}
+
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =*/
 /* = = = = = = = = = = = = = = = MediasQ = = = = = = = = = = = = = = = = = = = = = = =*/
