@@ -104,8 +104,6 @@ function ListIngredients(meal){
         }
     }
 
-    console.log(ingredients[1].ingredient + ''+ ingredients[1].measure);
-
     return ingredients;
 }
 
