@@ -16,6 +16,7 @@ var intervaloId1;   // intervalo de 10 segundos para mover las recetas favoritas
 var scrollposicion = 0;  //Variable para mecanica de movimiento del div de recetas favoritas
 
 
+
 document.addEventListener('DOMContentLoaded', function() {
 
     searchText = ''; 
@@ -460,7 +461,7 @@ function RenderizarRecetasRandom(listaRecetasR){
         botonS2.addEventListener("mouseleave",  function() {
             removerColorEstrellas("s2", this, this.parentNode.dataset.estrellas);
         });
-
+         
         //Boton de Estrella 3
         var botonS3 = document.createElement("button");
         botonS3.classList.add("star");
@@ -636,3 +637,66 @@ function irAlosDetallesDeReceta(boton, element){
     })
 };
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', function() {
+    entrada.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+            BusqueParaNuevaPagina();
+        }
+    });
+    botonBuscar.addEventListener('click', BusqueParaNuevaPagina);
+});
+
+function BusqueParaNuevaPagina() {
+    const query = entrada.value;
+    if (query.length > 0) {
+
+        window.location.href = `resultados.html?query=${encodeURIComponent(query)}`;
+    }
+}
+
+
+/////////////////////////////////////////////////
+
+// Función para insertar resultados en la tabla
+function insertarResultados(resultados) {
+    const tablaResultados = document.getElementById('tablaResultados');
+    
+    tablaResultados.innerHTML = '';
+    
+    resultados.forEach(resultado => {
+        const fila = document.createElement('tr');
+        
+        const nombreReceta = document.createElement('td');
+        nombreReceta.textContent = resultado.nombre; 
+        fila.appendChild(nombreReceta);
+        
+        const categoria = document.createElement('td');
+        categoria.textContent = resultado.categoria; 
+        fila.appendChild(categoria);
+        
+        const area = document.createElement('td');
+        area.textContent = resultado.area; 
+        fila.appendChild(area);
+        
+        const imagen = document.createElement('td');
+        const imagenElemento = document.createElement('img');
+        imagenElemento.src = resultado.imagen; 
+        imagenElemento.alt = resultado.nombre; 
+        imagen.appendChild(imagenElemento);
+        fila.appendChild(imagen);
+        
+        tablaResultados.appendChild(fila);
+    });
+}
+
+function BusqueParaNuevaPagina() {
+    const query = entrada.value;
+    if (query.length > 0) {
+        // Redirigir a la página resultados.html pasando el parámetro de búsqueda
+        window.location.href = `resultados.html?query=${encodeURIComponent(query)}`;
+    }
+}
