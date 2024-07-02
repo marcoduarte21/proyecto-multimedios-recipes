@@ -5,57 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados de búsqueda</title>
     <link rel="stylesheet" href="/Css/styleResultados.css">
+    <link rel="stylesheet" href="/Css/css.css">
+    <link rel="Icon" href="/Images/img.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins:ital,wght@0,400;1,200&family=Quicksand:wght@300..700&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
     
 </head>
 <body>
-    <div class="Encabezado" id="Encabezado">       
-            <h1>allrecipes</h1>
-    </div>
-    <h2>Resultados de búsqueda</h2>
+    <div class="container">
+    <div class="Encabezado" id="Encabezado">
+
+        <div class="Izquierda">
+            <div class="Menu_Icon"> </div>
+        </div>
+        
+        <div class="Centro">
+           <a href="Inicio.html"><h1 class="Text" >allrecipes</h1> </a>
+            <div class="SpoonIcon"></div>
+        </div>
+
+        <div class="Derecha">
+
+            <div class="ElementosDeBusqueda">
+                
+                <input class="EntradaDeBusqueda" type="text" id="EntradaDeBusqueda">    
+                
+                <button class="BotonA Buscar" id="BuscarId">
+                    <svg class="Icono IconoBuscar" > </svg>
+                </button>
+
+                <button class="BotonA Borrar" id="BorrarId">
+                    <svg class="Icono IconoBorrar" > </svg>
+                </button>
+
+                <button class="BotonA Abrir" id="AbrirId">
+                    <svg class= "Icono IconoAbrir" > </svg>
+                </button>
+
+                <button class="BotonA Cerrar" id="CerrarId">
+                    <svg class="Icono IconoCerrar" > </svg>
+                </button>
+
+            </div> 
+
+            <div class="Resultados" id="Resultados">
+                <!-- <button class="BotonP" id="BotonP">
+                    <h2 id="NombreP"> Nombre de Receta </h2>
+                </button>   -->
+            </div>
+
+        </div>
+
+    </div> <!--Fin Encabezado-->
+</div>
+
+    <h2 id="resultSearch">Resultados de búsqueda</h2>
     <div id="resultados"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get('query');
-            if (query) {
-                // Hacer la solicitud fetch con la API correspondiente (como se hace en tu función BuscarParaVistaPrevia)
-                const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Manejar los datos de respuesta
-                        console.log('Resultado de búsqueda:', data);
-                        renderizarResultados(data.meals);
-                    })
-                    .catch(error => {
-                        console.error('Hubo un problema con la solicitud fetch:', error);
-                    });
-            }
-        });
-
-        function renderizarResultados(resultados) {
-            const resultadosDiv = document.getElementById('resultados');
-            resultadosDiv.innerHTML = ''; // Limpiar resultados anteriores
-
-            resultados.forEach(receta => {
-                const recetaDiv = document.createElement('div');
-                recetaDiv.classList.add('receta');
-
-                const nombre = document.createElement('h2');
-                nombre.textContent = receta.strMeal;
-                recetaDiv.appendChild(nombre);
-
-                // Puedes añadir más detalles de la receta según tu diseño aquí
-
-                resultadosDiv.appendChild(recetaDiv);
-            });
-        }
-    </script>
+    <script src="/JavaScript/busqueda.js"></script>
+    <script src="/JavaScript/JS.js"></script>
 </body>
 </html>
