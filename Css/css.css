@@ -527,6 +527,12 @@
     font-weight: bold;
 }
 
+.claseTexto{
+    color: rgb(255, 162, 0);
+    font-weight: bold;
+    margin-left: 40%;
+}
+
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =*/
 /* = = = = = = = = = = = = = = = MediasQ = = = = = = = = = = = = = = = = = = = = = = =*/
@@ -650,5 +656,10 @@
 
     .containerYoutube iframe{
         width: 343px;
+    }
+
+    .claseTexto{
+        font-size: 13px;
+        margin-left: 20%;
     }
 } 

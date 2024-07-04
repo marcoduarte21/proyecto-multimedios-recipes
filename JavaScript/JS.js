@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     favoritos = document.getElementById("Favoritos");
     random = document.getElementById("Random");
     
-    // localStorage.removeItem('listaFavoritasJSON');
+    localStorage.removeItem('listaFavoritasJSON');
     
     /*Para hacer una accion cada ves que se ingresa una letra en el input de busqueda*/
     entrada.addEventListener('input', function(event) {
@@ -309,7 +309,7 @@ function agregarAFavoritas(id){
 function renderizarFavoritas(){
     console.log("renderizar recetas favoritas");
     vacearRenderFavoritas();
-    
+    if(listaFavoritas.length > 0){
     for(i=0; i < listaFavoritas.length; i++) {
         element = listaFavoritas[i];
 
@@ -366,8 +366,15 @@ function renderizarFavoritas(){
         boton.appendChild(nombre);
         boton.appendChild(nstrellas);
         favoritos.appendChild(boton);
+    }
+        }else{
+
+        const texto = document.createElement('p');
+        texto.textContent = 'Todavía no tiene recetas favoritas'
+        texto.classList.add('claseTexto');
+        favoritos.appendChild(texto);
+    }
     };  
-}
 
 function vacearRenderFavoritas(){
     favoritos.innerHTML="";
